@@ -13,14 +13,14 @@ with open(os.path.join("src", "oifits", "__init__.py")) as fp:
 setup(
     name="oifits",
     version=version["__version__"],
-    description="Python package for Working in OIFITS files!",
+    description="Python package for working with OIFITS files!",
     author="Shreyas Bapat",
     author_email="bapat.shreyas@gmail.com",
     url="https://python-oifits.shreyasb.com",
     download_url="https://github.com/shreyasbapat/python-oifits",
     license="MIT",
     keywords=["oifits", "fits", "radio-astronomy", "vlbi"],
-    python_requires=">=3.5",
+    python_requires=">=3.6",
     install_requires=[
         "numpy",
         "astropy",
@@ -34,12 +34,7 @@ setup(
             "pytest-cov<2.6.0",
             "pycodestyle",
             "sphinx",
-            "alabaster",
-            "nbsphinx",
-            "ipython>=5.0",
-            "jupyter-client",
-            "ipykernel",
-            "ipywidgets",
+            "alabaster"
         ]
     },
     packages=find_packages("src"),
@@ -52,7 +47,6 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Topic :: Scientific/Engineering",
