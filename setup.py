@@ -34,7 +34,11 @@ setup(
             "pytest-cov<2.6.0",
             "pycodestyle",
             "sphinx",
-            "alabaster"
+            "alabaster",
+            "nbsphinx",
+            "ipython>=5.0",
+            "jupyter-client",
+            "ipykernel"
         ]
     },
     packages=find_packages("src"),
