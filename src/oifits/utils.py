@@ -2,10 +2,6 @@ import datetime
 
 import numpy as np
 
-matchtargetbyname = False
-matchstationbyname = False
-refdate = datetime.datetime(2000, 1, 1)
-
 
 def _plurals(count):
     if count != 1:
@@ -14,8 +10,14 @@ def _plurals(count):
 
 
 def _array_eq(a, b):
-    "Test whether all the elements of two arrays are equal."
+    """
+    Test whether all the elements of two arrays are equal.
 
+    Parameters
+    ----------
+    a : ~numpy.ndarray
+    b : ~numpy.ndarray
+    """
     try:
         return not (a != b).any()
     except:
@@ -23,7 +25,9 @@ def _array_eq(a, b):
 
 
 class _angpoint(float):
-    "Convenience object for representing angles."
+    """
+    Convenience Class for representing angles.
+    """
 
     def __init__(self, angle):
         self.angle = angle

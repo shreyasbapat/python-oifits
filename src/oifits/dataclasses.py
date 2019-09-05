@@ -1,6 +1,12 @@
 import numpy as np
 
+import datetime
+
 from .utils import _angpoint
+
+matchtargetbyname = False
+matchstationbyname = False
+refdate = datetime.datetime(2000, 1, 1)
 
 
 class OI_TARGET:
@@ -75,8 +81,7 @@ class OI_TARGET:
         )
 
     def info(self):
-        print
-        str(self)
+        print(str(self))
 
 
 class OI_WAVELENGTH:
@@ -108,8 +113,7 @@ class OI_WAVELENGTH:
         )
 
     def info(self):
-        print
-        str(self)
+        print(str(self))
 
 
 class OI_VIS:
@@ -235,8 +239,7 @@ class OI_VIS:
         )
 
     def info(self):
-        print
-        str(self)
+        print(str(self))
 
 
 class OI_VIS2:
@@ -333,8 +336,7 @@ class OI_VIS2:
         )
 
     def info(self):
-        print
-        str(self)
+        print(str(self))
 
 
 class OI_T3:
@@ -444,8 +446,7 @@ class OI_T3:
         )
 
     def info(self):
-        print
-        str(self)
+        print(str(self))
 
 
 class OI_STATION:
@@ -546,12 +547,10 @@ class OI_ARRAY:
     def info(self, verbose=0):
         """Print the array's center coordinates.  If verbosity >= 1,
         print information about each station."""
-        print
-        str(self)
+        print(str(self))
         if verbose >= 1:
             for station in self.station:
-                print
-                "   %s" % str(station)
+                print("   %s" % str(station))
 
     def get_station_by_name(self, name):
 
