@@ -3,6 +3,8 @@ python-oifits
 
 Python Module to Read/Write OIFITS 
 
+Version : 0.1.0
+
 How to install:
 --------------
 
