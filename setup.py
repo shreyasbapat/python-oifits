@@ -21,10 +21,7 @@ setup(
     license="MIT",
     keywords=["oifits", "fits", "radio-astronomy", "vlbi"],
     python_requires=">=3.6",
-    install_requires=[
-        "numpy",
-        "astropy",
-    ],
+    install_requires=["numpy", "astropy"],
     extras_require={
         "dev": [
             "black ; python_version>='3.6'",
@@ -38,7 +35,7 @@ setup(
             "nbsphinx",
             "ipython>=5.0",
             "jupyter-client",
-            "ipykernel"
+            "ipykernel",
         ]
     },
     packages=find_packages("src"),

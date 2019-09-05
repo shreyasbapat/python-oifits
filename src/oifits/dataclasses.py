@@ -3,15 +3,11 @@ These Classes are inspired by Paul Boley's code for OIFITS Data!
 Copyright (c) 2013, Paul Boley
 """
 
-import numpy as np
-
 import datetime
 
-from .utils import _angpoint
+import numpy as np
 
-matchtargetbyname = False
-matchstationbyname = False
-refdate = datetime.datetime(2000, 1, 1)
+from .utils import _angpoint
 
 
 class OI_TARGET:
