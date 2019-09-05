@@ -7,8 +7,8 @@ project = "python-oifits"
 year = datetime.now().year
 copyright = "%d Shreyas Bapat" % year
 
-version = "0.1"
-release = "0.1.dev0"
+version = "0.2"
+release = "0.2.dev0"
 highlight_language = "python"
 pygments_style = "sphinx"
 autoclass_content = "both"
