@@ -1,11 +1,5 @@
 .. python-oifits
 
-.. image:: https://blog.einsteinpy.org/img/logo.png
-   :target: https://einsteinpy.org/
-   :alt: EinsteinPy logo
-   :width: 675px
-   :align: center
-
 .. |astropy| image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat-square
    :target: http://www.astropy.org/
 
@@ -144,7 +138,7 @@ And this is an example citation format::
 What's the future of the project?
 ---------------------------------
 
-oifits is a part of my Major Technicsl Project. 
+oifits is a part of my Major Technicsl Project.
 The best way to get an idea of the roadmap is to see the `Milestones`_ of
 the project.
 
