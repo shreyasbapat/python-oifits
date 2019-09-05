@@ -1,3 +1,8 @@
+"""
+These Classes are inspired by Paul Boley's code for OIFITS Data!
+Copyright (c) 2013, Paul Boley
+"""
+
 import numpy as np
 
 import datetime
