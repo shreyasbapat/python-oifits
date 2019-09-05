@@ -1,5 +1,7 @@
 import numpy as np
 
+import astropy.io.fits as fits
+
 class Data:
 
     def __init__(self):
@@ -381,8 +383,8 @@ class Data:
             'oifits object is not consistent, refusing to go further'
             return
 
-        hdulist = pyfits.HDUList()
-        hdu = pyfits.PrimaryHDU()
+        hdulist = fits.HDUList()
+        hdu = fits.PrimaryHDU()
         hdu.header.update('DATE', datetime.datetime.now().strftime(format='%F'), comment='Creation date')
         hdu.header.add_comment('Written by OIFITS Python module version %s' % __version__)
         hdu.header.add_comment('http://www.mpia-hd.mpg.de/homes/boley/oifits/')
@@ -391,9 +393,9 @@ class Data:
         hdulist.append(hdu)
         for insname, wavelength in self.wavelength.iteritems():
             wavelengthmap[id(wavelength)] = insname
-            hdu = pyfits.new_table(pyfits.ColDefs((
-                pyfits.Column(name='EFF_WAVE', format='1E', unit='METERS', array=wavelength.eff_wave),
-                pyfits.Column(name='EFF_BAND', format='1E', unit='METERS', array=wavelength.eff_band)
+            hdu = fits.new_table(fits.ColDefs((
+                fits.Column(name='EFF_WAVE', format='1E', unit='METERS', array=wavelength.eff_wave),
+                fits.Column(name='EFF_BAND', format='1E', unit='METERS', array=wavelength.eff_band)
             )))
             hdu.header.update('EXTNAME', 'OI_WAVELENGTH')
             hdu.header.update('OI_REVN', 1, 'Revision number of the table definition')
@@ -440,24 +442,24 @@ class Data:
                 para_err.append(targ.para_err)
                 spectyp.append(targ.spectyp)
 
-            hdu = pyfits.new_table(pyfits.ColDefs((
-                pyfits.Column(name='TARGET_ID', format='1I', array=target_id),
-                pyfits.Column(name='TARGET', format='16A', array=target),
-                pyfits.Column(name='RAEP0', format='D1', unit='DEGREES', array=raep0),
-                pyfits.Column(name='DECEP0', format='D1', unit='DEGREES', array=decep0),
-                pyfits.Column(name='EQUINOX', format='E1', unit='YEARS', array=equinox),
-                pyfits.Column(name='RA_ERR', format='D1', unit='DEGREES', array=ra_err),
-                pyfits.Column(name='DEC_ERR', format='D1', unit='DEGREES', array=dec_err),
-                pyfits.Column(name='SYSVEL', format='D1', unit='M/S', array=sysvel),
-                pyfits.Column(name='VELTYP', format='A8', array=veltyp),
-                pyfits.Column(name='VELDEF', format='A8', array=veldef),
-                pyfits.Column(name='PMRA', format='D1', unit='DEG/YR', array=pmra),
-                pyfits.Column(name='PMDEC', format='D1', unit='DEG/YR', array=pmdec),
-                pyfits.Column(name='PMRA_ERR', format='D1', unit='DEG/YR', array=pmra_err),
-                pyfits.Column(name='PMDEC_ERR', format='D1', unit='DEG/YR', array=pmdec_err),
-                pyfits.Column(name='PARALLAX', format='E1', unit='DEGREES', array=parallax),
-                pyfits.Column(name='PARA_ERR', format='E1', unit='DEGREES', array=para_err),
-                pyfits.Column(name='SPECTYP', format='A16', array=spectyp)
+            hdu = fits.new_table(fits.ColDefs((
+                fits.Column(name='TARGET_ID', format='1I', array=target_id),
+                fits.Column(name='TARGET', format='16A', array=target),
+                fits.Column(name='RAEP0', format='D1', unit='DEGREES', array=raep0),
+                fits.Column(name='DECEP0', format='D1', unit='DEGREES', array=decep0),
+                fits.Column(name='EQUINOX', format='E1', unit='YEARS', array=equinox),
+                fits.Column(name='RA_ERR', format='D1', unit='DEGREES', array=ra_err),
+                fits.Column(name='DEC_ERR', format='D1', unit='DEGREES', array=dec_err),
+                fits.Column(name='SYSVEL', format='D1', unit='M/S', array=sysvel),
+                fits.Column(name='VELTYP', format='A8', array=veltyp),
+                fits.Column(name='VELDEF', format='A8', array=veldef),
+                fits.Column(name='PMRA', format='D1', unit='DEG/YR', array=pmra),
+                fits.Column(name='PMDEC', format='D1', unit='DEG/YR', array=pmdec),
+                fits.Column(name='PMRA_ERR', format='D1', unit='DEG/YR', array=pmra_err),
+                fits.Column(name='PMDEC_ERR', format='D1', unit='DEG/YR', array=pmdec_err),
+                fits.Column(name='PARALLAX', format='E1', unit='DEGREES', array=parallax),
+                fits.Column(name='PARA_ERR', format='E1', unit='DEGREES', array=para_err),
+                fits.Column(name='SPECTYP', format='A16', array=spectyp)
             )))
             hdu.header.update('EXTNAME', 'OI_TARGET')
             hdu.header.update('OI_REVN', 1, 'Revision number of the table definition')
@@ -480,12 +482,12 @@ class Data:
                     sta_index.append(i)
                     diameter.append(station.diameter)
                     staxyz.append(station.staxyz)
-                hdu = pyfits.new_table(pyfits.ColDefs((
-                    pyfits.Column(name='TEL_NAME', format='16A', array=tel_name),
-                    pyfits.Column(name='STA_NAME', format='16A', array=sta_name),
-                    pyfits.Column(name='STA_INDEX', format='1I', array=sta_index),
-                    pyfits.Column(name='DIAMETER', unit='METERS', format='1E', array=diameter),
-                    pyfits.Column(name='STAXYZ', unit='METERS', format='3D', array=staxyz)
+                hdu = fits.new_table(fits.ColDefs((
+                    fits.Column(name='TEL_NAME', format='16A', array=tel_name),
+                    fits.Column(name='STA_NAME', format='16A', array=sta_name),
+                    fits.Column(name='STA_INDEX', format='1I', array=sta_index),
+                    fits.Column(name='DIAMETER', unit='METERS', format='1E', array=diameter),
+                    fits.Column(name='STAXYZ', unit='METERS', format='3D', array=staxyz)
                 )))
             hdu.header.update('EXTNAME', 'OI_ARRAY')
             hdu.header.update('OI_REVN', 1, 'Revision number of the table definition')
@@ -566,27 +568,27 @@ class Data:
                 data = tables[key]
                 nwave = self.wavelength[key[1]].eff_wave.size
 
-                hdu = pyfits.new_table(pyfits.ColDefs([
-                    pyfits.Column(name='TARGET_ID', format='1I', array=data['target_id']),
-                    pyfits.Column(name='TIME', format='1D', unit='SECONDS', array=data['time']),
-                    pyfits.Column(name='MJD', unit='DAY', format='1D', array=data['mjd']),
-                    pyfits.Column(name='INT_TIME', format='1D', unit='SECONDS', array=data['int_time']),
-                    pyfits.Column(name='VISAMP', format='%dD' % nwave, array=data['visamp']),
-                    pyfits.Column(name='VISAMPERR', format='%dD' % nwave, array=data['visamperr']),
-                    pyfits.Column(name='VISPHI', unit='DEGREES', format='%dD' % nwave, array=data['visphi']),
-                    pyfits.Column(name='VISPHIERR', unit='DEGREES', format='%dD' % nwave, array=data['visphierr']),
-                    pyfits.Column(name='CFLUX', format='%dD' % nwave, array=data['cflux']),
-                    pyfits.Column(name='CFLUXERR', format='%dD' % nwave, array=data['cfluxerr']),
-                    pyfits.Column(name='UCOORD', format='1D', unit='METERS', array=data['ucoord']),
-                    pyfits.Column(name='VCOORD', format='1D', unit='METERS', array=data['vcoord']),
-                    pyfits.Column(name='STA_INDEX', format='2I', array=data['sta_index'], null=-1),
-                    pyfits.Column(name='FLAG', format='%dL' % nwave)
+                hdu = fits.new_table(fits.ColDefs([
+                    fits.Column(name='TARGET_ID', format='1I', array=data['target_id']),
+                    fits.Column(name='TIME', format='1D', unit='SECONDS', array=data['time']),
+                    fits.Column(name='MJD', unit='DAY', format='1D', array=data['mjd']),
+                    fits.Column(name='INT_TIME', format='1D', unit='SECONDS', array=data['int_time']),
+                    fits.Column(name='VISAMP', format='%dD' % nwave, array=data['visamp']),
+                    fits.Column(name='VISAMPERR', format='%dD' % nwave, array=data['visamperr']),
+                    fits.Column(name='VISPHI', unit='DEGREES', format='%dD' % nwave, array=data['visphi']),
+                    fits.Column(name='VISPHIERR', unit='DEGREES', format='%dD' % nwave, array=data['visphierr']),
+                    fits.Column(name='CFLUX', format='%dD' % nwave, array=data['cflux']),
+                    fits.Column(name='CFLUXERR', format='%dD' % nwave, array=data['cfluxerr']),
+                    fits.Column(name='UCOORD', format='1D', unit='METERS', array=data['ucoord']),
+                    fits.Column(name='VCOORD', format='1D', unit='METERS', array=data['vcoord']),
+                    fits.Column(name='STA_INDEX', format='2I', array=data['sta_index'], null=-1),
+                    fits.Column(name='FLAG', format='%dL' % nwave)
                 ]))
 
                 # Setting the data of logical field via the
-                # pyfits.Column call above with length > 1 (eg
+                # fits.Column call above with length > 1 (eg
                 # format='171L' above) seems to be broken, atleast as
-                # of PyFITS 2.2.2
+                # of fits 2.2.2
                 hdu.data.field('FLAG').setfield(data['flag'], bool)
                 hdu.header.update('EXTNAME', 'OI_VIS')
                 hdu.header.update('OI_REVN', 1, 'Revision number of the table definition')
@@ -637,22 +639,22 @@ class Data:
                 data = tables[key]
                 nwave = self.wavelength[key[1]].eff_wave.size
 
-                hdu = pyfits.new_table(pyfits.ColDefs([
-                    pyfits.Column(name='TARGET_ID', format='1I', array=data['target_id']),
-                    pyfits.Column(name='TIME', format='1D', unit='SECONDS', array=data['time']),
-                    pyfits.Column(name='MJD', format='1D', unit='DAY', array=data['mjd']),
-                    pyfits.Column(name='INT_TIME', format='1D', unit='SECONDS', array=data['int_time']),
-                    pyfits.Column(name='VIS2DATA', format='%dD' % nwave, array=data['vis2data']),
-                    pyfits.Column(name='VIS2ERR', format='%dD' % nwave, array=data['vis2err']),
-                    pyfits.Column(name='UCOORD', format='1D', unit='METERS', array=data['ucoord']),
-                    pyfits.Column(name='VCOORD', format='1D', unit='METERS', array=data['vcoord']),
-                    pyfits.Column(name='STA_INDEX', format='2I', array=data['sta_index'], null=-1),
-                    pyfits.Column(name='FLAG', format='%dL' % nwave, array=data['flag'])
+                hdu = fits.new_table(fits.ColDefs([
+                    fits.Column(name='TARGET_ID', format='1I', array=data['target_id']),
+                    fits.Column(name='TIME', format='1D', unit='SECONDS', array=data['time']),
+                    fits.Column(name='MJD', format='1D', unit='DAY', array=data['mjd']),
+                    fits.Column(name='INT_TIME', format='1D', unit='SECONDS', array=data['int_time']),
+                    fits.Column(name='VIS2DATA', format='%dD' % nwave, array=data['vis2data']),
+                    fits.Column(name='VIS2ERR', format='%dD' % nwave, array=data['vis2err']),
+                    fits.Column(name='UCOORD', format='1D', unit='METERS', array=data['ucoord']),
+                    fits.Column(name='VCOORD', format='1D', unit='METERS', array=data['vcoord']),
+                    fits.Column(name='STA_INDEX', format='2I', array=data['sta_index'], null=-1),
+                    fits.Column(name='FLAG', format='%dL' % nwave, array=data['flag'])
                 ]))
                 # Setting the data of logical field via the
-                # pyfits.Column call above with length > 1 (eg
+                # fits.Column call above with length > 1 (eg
                 # format='171L' above) seems to be broken, atleast as
-                # of PyFITS 2.2.2
+                # of fits 2.2.2
                 hdu.data.field('FLAG').setfield(data['flag'], bool)
                 hdu.header.update('EXTNAME', 'OI_VIS2')
                 hdu.header.update('OI_REVN', 1, 'Revision number of the table definition')
@@ -711,26 +713,26 @@ class Data:
                 data = tables[key]
                 nwave = self.wavelength[key[1]].eff_wave.size
 
-                hdu = pyfits.new_table(pyfits.ColDefs((
-                    pyfits.Column(name='TARGET_ID', format='1I', array=data['target_id']),
-                    pyfits.Column(name='TIME', format='1D', unit='SECONDS', array=data['time']),
-                    pyfits.Column(name='MJD', format='1D', unit='DAY', array=data['mjd']),
-                    pyfits.Column(name='INT_TIME', format='1D', unit='SECONDS', array=data['int_time']),
-                    pyfits.Column(name='T3AMP', format='%dD' % nwave, array=data['t3amp']),
-                    pyfits.Column(name='T3AMPERR', format='%dD' % nwave, array=data['t3amperr']),
-                    pyfits.Column(name='T3PHI', format='%dD' % nwave, unit='DEGREES', array=data['t3phi']),
-                    pyfits.Column(name='T3PHIERR', format='%dD' % nwave, unit='DEGREES', array=data['t3phierr']),
-                    pyfits.Column(name='U1COORD', format='1D', unit='METERS', array=data['u1coord']),
-                    pyfits.Column(name='V1COORD', format='1D', unit='METERS', array=data['v1coord']),
-                    pyfits.Column(name='U2COORD', format='1D', unit='METERS', array=data['u2coord']),
-                    pyfits.Column(name='V2COORD', format='1D', unit='METERS', array=data['v2coord']),
-                    pyfits.Column(name='STA_INDEX', format='3I', array=data['sta_index'], null=-1),
-                    pyfits.Column(name='FLAG', format='%dL' % nwave, array=data['flag'])
+                hdu = fits.new_table(fits.ColDefs((
+                    fits.Column(name='TARGET_ID', format='1I', array=data['target_id']),
+                    fits.Column(name='TIME', format='1D', unit='SECONDS', array=data['time']),
+                    fits.Column(name='MJD', format='1D', unit='DAY', array=data['mjd']),
+                    fits.Column(name='INT_TIME', format='1D', unit='SECONDS', array=data['int_time']),
+                    fits.Column(name='T3AMP', format='%dD' % nwave, array=data['t3amp']),
+                    fits.Column(name='T3AMPERR', format='%dD' % nwave, array=data['t3amperr']),
+                    fits.Column(name='T3PHI', format='%dD' % nwave, unit='DEGREES', array=data['t3phi']),
+                    fits.Column(name='T3PHIERR', format='%dD' % nwave, unit='DEGREES', array=data['t3phierr']),
+                    fits.Column(name='U1COORD', format='1D', unit='METERS', array=data['u1coord']),
+                    fits.Column(name='V1COORD', format='1D', unit='METERS', array=data['v1coord']),
+                    fits.Column(name='U2COORD', format='1D', unit='METERS', array=data['u2coord']),
+                    fits.Column(name='V2COORD', format='1D', unit='METERS', array=data['v2coord']),
+                    fits.Column(name='STA_INDEX', format='3I', array=data['sta_index'], null=-1),
+                    fits.Column(name='FLAG', format='%dL' % nwave, array=data['flag'])
                 )))
                 # Setting the data of logical field via the
-                # pyfits.Column call above with length > 1 (eg
+                # fits.Column call above with length > 1 (eg
                 # format='171L' above) seems to be broken, atleast as
-                # of PyFITS 2.2.2
+                # of fits 2.2.2
                 hdu.data.field('FLAG').setfield(data['flag'], bool)
                 hdu.header.update('EXTNAME', 'OI_T3')
                 hdu.header.update('OI_REVN', 1, 'Revision number of the table definition')
