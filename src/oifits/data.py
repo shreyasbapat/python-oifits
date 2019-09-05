@@ -4,8 +4,9 @@ import datetime
 import astropy.io.fits as fits
 import numpy as np
 
-from .utils import _plurals
+from .utils import _plurals, _array_eq
 
+_mjdzero = datetime.datetime(1858, 11, 17)
 matchtargetbyname = False
 matchstationbyname = False
 refdate = datetime.datetime(2000, 1, 1)
@@ -205,8 +206,7 @@ class Data:
             for wavelength in self.wavelength.values():
                 if len(wavelength.eff_wave) != len(wavelength.eff_band):
                     errors.append(
-                        "eff_wave and eff_band are of different lengths for wavelength table '%s'"
-                        % key
+                        "eff_wave and eff_band are of different lengths for wavelength table"
                     )
         if self.vis.size + self.vis2.size + self.t3.size == 0:
             errors.append(
