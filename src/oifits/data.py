@@ -4,7 +4,7 @@ import datetime
 import astropy.io.fits as fits
 import numpy as np
 
-from .utils import _plurals, _array_eq
+from .utils import _array_eq, _plurals
 
 _mjdzero = datetime.datetime(1858, 11, 17)
 matchtargetbyname = False
@@ -510,9 +510,7 @@ class Data:
             datetime.datetime.now().strftime(format="%F"),
             comment="Creation date",
         )
-        hdu.header.add_comment(
-            "Written by OIFITS Python module version %s" % __version__
-        )
+        hdu.header.add_comment("Written by oifits version 0.1.0")
         hdu.header.add_comment("http://www.mpia-hd.mpg.de/homes/boley/oifits/")
 
         wavelengthmap = {}

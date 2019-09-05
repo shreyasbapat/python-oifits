@@ -7,7 +7,7 @@ import datetime
 
 import numpy as np
 
-from .utils import _angpoint
+from .utils import _angpoint, _array_eq, _plurals
 
 
 class OI_TARGET:
@@ -194,10 +194,10 @@ class OI_VIS:
 
     def __getattr__(self, attrname):
         if attrname in ("visamp", "visamperr", "visphi", "visphierr"):
-            return ma.masked_array(self.__dict__["_" + attrname], mask=self.flag)
+            return np.ma.masked_array(self.__dict__["_" + attrname], mask=self.flag)
         elif attrname in ("cflux", "cfluxerr"):
             if self.__dict__["_" + attrname] != None:
-                return ma.masked_array(self.__dict__["_" + attrname], mask=self.flag)
+                return np.ma.masked_array(self.__dict__["_" + attrname], mask=self.flag)
             else:
                 return None
         else:
@@ -217,7 +217,7 @@ class OI_VIS:
             self.__dict__[attrname] = value
 
     def __repr__(self):
-        meanvis = ma.mean(self.visamp)
+        meanvis = np.ma.mean(self.visamp)
         if self.station[0] and self.station[1]:
             baselinename = (
                 " (" + self.station[0].sta_name + self.station[1].sta_name + ")"
@@ -303,7 +303,7 @@ class OI_VIS2:
 
     def __getattr__(self, attrname):
         if attrname in ("vis2data", "vis2err"):
-            return ma.masked_array(self.__dict__["_" + attrname], mask=self.flag)
+            return np.ma.masked_array(self.__dict__["_" + attrname], mask=self.flag)
         else:
             raise AttributeError(attrname)
 
@@ -314,7 +314,7 @@ class OI_VIS2:
             self.__dict__[attrname] = value
 
     def __repr__(self):
-        meanvis = ma.mean(self.vis2data)
+        meanvis = np.ma.mean(self.vis2data)
         if self.station[0] and self.station[1]:
             baselinename = (
                 " (" + self.station[0].sta_name + self.station[1].sta_name + ")"
