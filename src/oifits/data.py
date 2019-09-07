@@ -13,11 +13,11 @@ refdate = datetime.datetime(2000, 1, 1)
 
 
 class Data:
-    def __init__(self):
-        """
-        Constructor.
-        """
+    """
+    Class for storing the Data of OIFITS file.
+    """
 
+    def __init__(self):
         self.wavelength = {}
         self.target = np.empty(0)
         self.array = {}

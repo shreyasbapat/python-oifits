@@ -12,7 +12,7 @@ class OIParser:
 
     def __init__(self, filename):
         self.hdulist = fits.open(filename)
-        self.data = self._process()
+        self.data = self.process()
         self.hdulist.close()
         self.t3data = None
 
@@ -24,7 +24,15 @@ class OIParser:
     def read(cls, filename):
         return cls(filename=filename)
 
-    def _process(self):
+    def process(self):
+        """
+        Method to process a OIFITS file.
+
+        Returns
+        -------
+        dataobj : ~oifits.data.Data
+            Object containing all the data
+        """
         dataobj = Data()
         targetmap = {}
         sta_indices = {}
@@ -227,6 +235,10 @@ class OIParser:
         """
         Method to export the data in OIFITS file to ASCII as a numpy array
 
+        Returns
+        -------
+        t3data : ~numpy.ndarray
+            Array Containing u1, v1, u2, v2, u3, v3, t3amp, t3phi, t3err.
         """
         t3 = self.data.t3
         # get wavelength data
@@ -253,6 +265,15 @@ class OIParser:
         return self.t3data
 
     def save_file(self, filename):
+        """
+        Method to save the data in a file as ASCII
+
+        Parameters
+        ----------
+        filename : str
+            Name of the file with ".txt" extension
+
+        """
         if self.t3data:
             np.savetxt(filename, self.t3data)
         else:
