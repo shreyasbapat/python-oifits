@@ -19,7 +19,7 @@
    :target: https://riot.im/app/#/room/#oifits:matrix.org
 
 .. |license| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
-   :target: https://github.com/shreyasbapat/python-oifits/raw/master/COPYING
+   :target: https://github.com/shreyasbapat/python-oifits/raw/0.2.x/COPYING
 
 .. |docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat-square
    :target: http://oifits.vlbi.software/en/latest/?badge=latest
@@ -101,7 +101,7 @@ Contributing
 oifits is a community project, hence all contributions are more than
 welcome! For more information, head to `CONTRIBUTING.rst`_.
 
-.. _`CONTRIBUTING.rst`: https://github.com/shreyasbapat/python-oifits/blob/master/CONTRIBUTING.rst
+.. _`CONTRIBUTING.rst`: https://github.com/shreyasbapat/python-oifits/blob/0.2.x/CONTRIBUTING.rst
 
 
 Support
