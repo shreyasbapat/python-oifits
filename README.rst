@@ -6,13 +6,13 @@
 .. |mailing| image:: https://img.shields.io/badge/mailing%20list-groups.io-8cbcd1.svg?style=flat-square
    :target: https://groups.io/g/oifits-dev
 
-.. |doi| image:: https://zenodo.org/badge/168302584.svg?style=flat-square
-   :target: https://zenodo.org/badge/latestdoi/168302584
+.. |doi| image:: https://zenodo.org/badge/DOI/10.5281/zenodo.3402135.svg
+   :target: https://doi.org/10.5281/zenodo.3402135
 
-.. |riotchat| image:: https://img.shields.io/matrix/oiifts:matrix.org.svg?logo=riot&style=flat-square
+.. |riotchat| image:: https://img.shields.io/matrix/oifits:matrix.org.svg?logo=riot&style=flat-square
    :target: https://riot.im/app/#/room/#oifits:matrix.org
 
-.. |license| image:: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+.. |license| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
    :target: https://github.com/shreyasbapat/python-oifits/raw/master/COPYING
 
 .. |docs| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat-square
@@ -23,11 +23,16 @@
 
 :Name: python-oifits
 :Author: Shreyas Bapat |orcid-shreyas|
-:Website: http://vlbi.software/
+:Website: http://oifits.vlbi.software/
 :Version: 0.2.dev0
 
-|astropy| |mailing|  |riotchat| |license| |docs|
+|astropy| |mailing|  |riotchat| |license| |docs| |doi|
 
+**python-oifits** is the python package for dealing with Event Horizons Telescope Data. The Data
+is in infamous OIFITS format. Which is too complex to parse everytime when applying any machine learning
+or deep learning model on the VLBI Data. The module provides easy access to all the data that is in the
+OIFITS file. And provides a easy function to export all the data to a numpy array for making computer
+scientists later spending time on the application of data science models rather than understanding the data.
 
 Documentation
 =============
@@ -35,20 +40,18 @@ Documentation
 |docs|
 
 Complete documentation, including a user guide and an API reference, can be read on
-the wonderful `Read the Docs`_.
+the given link:
 
 http://oifits.vlbi.software/
-
-.. _`Read the Docs`: https://readthedocs.org/
 
 
 Requirements
 ============
 
-EinsteinPy requires the following Python packages:
+oifits requires the following Python packages:
 
 * NumPy, for basic numerical routines
-* Astropy, for physical units and time handling
+* Astropy, for fits handling
 
 oifits is usually tested on Linux on Python
 3.6 and 3.7 against latest NumPy.
@@ -57,11 +60,7 @@ Installation
 ============
 
 The easiest and fastest way to get the package up and running is to
-install python-oifits using `conda <http://conda.io>`_::
-
-  $ conda install oifits --channel conda-forge
-
-Or for Debian/Ubuntu/Mint users, the package is installable from `apt <https://packages.debian.org/sid/python3-einsteinpy>`_::
+install python-oifits using pip by simply running::
 
   $ pip install oifits
 
@@ -98,7 +97,6 @@ welcome! For more information, head to `CONTRIBUTING.rst`_.
 
 .. _`CONTRIBUTING.rst`: https://github.com/shreyasbapat/python-oifits/blob/master/CONTRIBUTING.rst
 
-Developers Documentation can be found here.
 
 Support
 =======
@@ -132,14 +130,13 @@ one:
 
 And this is an example citation format::
 
- Shreyas Bapat et al.. (2019). oifits: oifits 0.1.0. Zenodo. 10.5281/zenodo.2582388
+ Shreyas Bapat et al.. (2019). oifits: oifits 0.1.1. Zenodo. 10.5281/zenodo.3402135
 
 
-What's the future of the project?
----------------------------------
+Why care for the OIFITS now?
+----------------------------
 
-oifits is a part of my Major Technicsl Project.
-The best way to get an idea of the roadmap is to see the `Milestones`_ of
-the project.
-
-.. _`Milestones`: https://github.com/shreyasbapat/python-oifits/milestones
+oifits is a part of my Major Technical Project of my B.Tech. Degree. I faced the issue of not understanding
+exactly what the data was, and there was NO PYTHON MODULE which can tell me what's inside the data file.
+So I spent a significant amount of my research in understanding the data. And I don't want this to happen to
+anyone who wants to dio their research using the world's largest telescope ;) (Hypothetically!)

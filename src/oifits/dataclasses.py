@@ -1,6 +1,7 @@
 """
 These Classes are inspired by Paul Boley's code for OIFITS Data!
 Copyright (c) 2013, Paul Boley
+Copyright (c) 2019, Shreyas Bapat
 """
 
 import datetime
@@ -546,8 +547,11 @@ class OI_ARRAY:
         )
 
     def info(self, verbose=0):
-        """Print the array's center coordinates.  If verbosity >= 1,
-        print information about each station."""
+        """
+        Print the array's center coordinates.
+        If verbosity >= 1,
+        print information about each station.
+        """
         print(str(self))
         if verbose >= 1:
             for station in self.station:

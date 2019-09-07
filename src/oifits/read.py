@@ -1,6 +1,5 @@
-import datetime
-
 import astropy.io.fits as fits
+import numpy as np
 
 from .data import Data
 from .dataclasses import *
@@ -15,6 +14,7 @@ class OIParser:
         self.hdulist = fits.open(filename)
         self.data = self._process()
         self.hdulist.close()
+        self.t3data = None
 
     @property
     def info(self):
@@ -222,3 +222,38 @@ class OIParser:
                         ),
                     )
         return dataobj
+
+    def export_to_ascii(self):
+        """
+        Method to export the data in OIFITS file to ASCII as a numpy array
+
+        """
+        t3 = self.data.t3
+        # get wavelength data
+        wav = self.data.wavelength["WAVELENGTH_NAME"].eff_wave[0]
+
+        # output u1, v1, u2, v2, u3, v3, t3amp, t3phi, t3err
+        t3data = [
+            [
+                t3[i].u1coord / wav,
+                t3[i].v1coord / wav,
+                t3[i].u2coord / wav,
+                t3[i].v2coord / wav,
+                -(t3[i].u1coord + t3[i].u2coord) / wav,
+                -(t3[i].v1coord + t3[i].v2coord) / wav,
+                t3[i].t3amp[0],
+                t3[i].t3phi[0],
+                t3[i].t3amperr[0],
+                t3[i].t3phierr[0],
+            ]
+            for i in range(len(t3))
+        ]
+
+        self.t3data = np.array(t3data)
+        return self.t3data
+
+    def save_file(self, filename):
+        if self.t3data:
+            np.savetxt(filename, self.t3data)
+        else:
+            self.export_to_ascii()

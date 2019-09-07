@@ -1,5 +1,5 @@
 ---
-title: 'oifits : A Tool which makes understanding EHT Data Easy'
+title: 'oifits : Python Module for Processing EHT Data'
 tags:
   - Python
   - astronomy
