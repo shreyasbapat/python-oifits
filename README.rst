@@ -30,7 +30,7 @@
 :Name: python-oifits
 :Author: Shreyas Bapat |orcid-shreyas|
 :Website: http://oifits.vlbi.software/
-:Version: 0.2.dev0
+:Version: 0.2.0
 
 |astropy| |mailing|  |riotchat| |license| |docs| |doi|
 

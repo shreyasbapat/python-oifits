@@ -5,4 +5,4 @@ python-oifits
 Python for reading data from Radio Observations
 """
 
-__version__ = "0.2.dev0"
+__version__ = "0.2.0"
