@@ -26,6 +26,7 @@ setup(
         "dev": [
             "black ; python_version>='3.6'",
             "coverage",
+            "tox",
             "isort",
             "pytest",
             "pytest-cov<2.6.0",
