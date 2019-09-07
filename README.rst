@@ -1,6 +1,6 @@
 .. python-oifits
 
-.. image:: http://vlbi.software/logo.png/
+.. image:: http://vlbi.software/logo.png
    :target: http://vlbi.software/
    :alt: python-oifits logo
    :width: 200px
