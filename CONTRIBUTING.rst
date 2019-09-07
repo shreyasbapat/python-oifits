@@ -50,7 +50,7 @@ Code writing
 ------------
 
 Code contributions are welcome! If you are looking for a place to start,
-help us fixing bugs in einsteinpy and check out the `"easy" tag`_. Those
+help us fixing bugs in python-oifits and check out the `"easy" tag`_. Those
 should be easier to fix than the others and require less knowledge about the
 library.
 
@@ -94,7 +94,7 @@ effort and to make it understandable to a broader audience.
 All new features should be thoroughly tested, and in the ideal case the
 coverage rate should increase or stay the same. Automatic services will ensure
 your code works on all the operative systems and package combinations
-einsteinpy support - specifically, note that einsteinpy is a Python 3 only
+python-oifits support - specifically, note that python-oifits is a Python 3 only
 library.
 
 Development environment
@@ -104,7 +104,7 @@ These are some succint steps to set up a development environment:
 
 1. `Install git <https://git-scm.com/>`_ on your computer.
 2. `Register to GitHub <https://github.com/>`_.
-3. `Fork einsteinpy <https://help.github.com/articles/fork-a-repo/>`_.
+3. `Fork python-oifits <https://help.github.com/articles/fork-a-repo/>`_.
 4. `Clone your fork <https://help.github.com/articles/cloning-a-repository/>`_.
 5. Install it in development mode using
    :code:`pip install --editable /path/to/python-oifits/[dev]` (this means that the
