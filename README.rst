@@ -1,5 +1,11 @@
 .. python-oifits
 
+.. image:: http://vlbi.software/logo.png/
+   :target: http://vlbi.software/
+   :alt: python-oifits logo
+   :width: 200px
+   :align: center
+
 .. |astropy| image:: http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat-square
    :target: http://www.astropy.org/
 
